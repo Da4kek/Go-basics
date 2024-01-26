@@ -10,6 +10,12 @@ func fibonacci(n int) {
 	}
 }
 
+func result() int {
+	var myInt int
+	return myInt
+}
+
 func main() {
 	fibonacci(10)
+	fmt.Println(result())
 }
