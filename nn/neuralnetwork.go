@@ -36,3 +36,29 @@ func Network(inputNodes, hiddenNodes, outputNodes int, learningRate float64) *Ne
 	nn.weightsOutput = randomMatrix(nn.outputNodes, nn.hiddenNodes)
 	return nn
 }
+
+func (nn *Neuralnetwork) Train(inputs []float64, targets []float64) {
+}
+
+func matMul(a, b [][]float64) [][]float64 {
+	rowsA, colsA := len(a), len(a[0])
+	rowsB, colsB := len(b), len(b[0])
+
+	if colsA != rowsB {
+		panic("Matrix dimensions do not match for multiplication")
+	}
+
+	result := make([][]float64, rowsA)
+	for i := 0; i < rowsA; i++ {
+		result[i] = make([]float64, colsB)
+		for j := 0; j < colsB; j++ {
+			sum := 0.0
+			for k := 0; k < colsA; k++ {
+				sum += a[i][k] * b[k][j]
+			}
+			result[i][j] = sum
+		}
+	}
+
+	return result
+}
