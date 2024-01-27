@@ -23,11 +23,15 @@ To get started with Godoc, follow these steps:
 
 1. Clone the repository to your local machine:
    
-```git clone https://github.com/Da4kek/Godoc.git```
+```
+git clone https://github.com/Da4kek/Godoc.git
+```
 
 2. Navigate to the project directory:
 
-```cd Godoc```
+```
+cd Godoc
+```
 
 
 3. Choose the project you want to explore (e.g., Docker).
