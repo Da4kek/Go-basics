@@ -9,17 +9,26 @@ import (
 )
 
 func main() {
-	InstallDocker()
+	fmt.Println("Starting Kali Linux Docker container...")
+	startKali()
 
-	fmt.Println("Starting Docker...")
-	StartDocker()
-
+	fmt.Println("Starting Zsh shell...")
 	startZsh()
+}
+
+func startKali() {
+	cmd := exec.Command("docker", "run", "-it", "--name", "kali-container", "kalilinux/kali-linux-docker")
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+	err := cmd.Run()
+	if err != nil {
+		fmt.Println("Error starting Kali Linux Docker container:", err)
+	}
 }
 
 func startZsh() {
 	reader := bufio.NewReader(os.Stdin)
-    StartBashInDocker()
 
 	for {
 		fmt.Print("zsh> ")
@@ -33,7 +42,6 @@ func startZsh() {
 
 		if input == "exit" {
 			fmt.Println("Exiting Zsh shell...")
-            StopDocker()
 			break
 		}
 
